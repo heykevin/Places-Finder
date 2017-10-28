@@ -45,7 +45,7 @@ export const googleApiWrapper = (WrappedComponent) => {
       console.log(this.state);
       return (
         <div className="google-wrapper">
-           <WrappedComponent map={this.state.map} google={window.google} service={this.state.service} {...this.props}/> 
+           <WrappedComponent map={this.state.map} google={window.google} loc={this.state.location} service={this.state.service} {...this.props}/> 
         </div>
       );
     }

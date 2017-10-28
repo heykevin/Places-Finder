@@ -11,21 +11,19 @@ class Map extends Component {
 
   createMarker(place) {
     var placeLoc = place.geometry.location;
-    
-    // var marker = new this.props.google.maps.Marker({
-    //   map: this.context.map,
-    //   position: place.geometry.location
-    // });
-    // let infowindow = new this.props.google.maps.InfoWindow();
-    // const map = this.context.map;
-    // this.props.google.maps.event.addListener(marker, 'click', function() {
-    //   infowindow.setContent(place.name);
-    //   infowindow.open(map, this);
-    // });
+    var marker = new this.props.google.maps.Marker({
+      map: this.props.map,
+      position: place.geometry.location
+    });
+    let infowindow = new this.props.google.maps.InfoWindow();
+    const map = this.context.map;
+    this.props.google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(place.name);
+      infowindow.open(map, this);
+    });
   }
 
   cb(results, status) {
-    console.log("CLICK", status)
     if (status == this.props.google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         var place = results[i];
