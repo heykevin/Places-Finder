@@ -4,10 +4,6 @@ html, body {
 .App {
   text-align: center; }
 
-.bottom {
-  height: 500px;
-  background-color: grey; }
-
 .App-header {
   background-color: #222;
   height: 150px;

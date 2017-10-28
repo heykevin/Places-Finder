@@ -1,0 +1,11 @@
+.map-list {
+  width: 35%;
+  height: 50%;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: white;
+  position: fixed;
+  z-index: 9; 
+  overflow-y: scroll;
+  min-width: 370px;
+}
