@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ListGroup, FormGroup, InputGroup, FormControl, Button} from 'react-bootstrap';
 import PlaceItem from './PlaceItem.js';
-import './MapList.css';
+import './styles/MapList.css';
 
 class MapList extends Component {
   

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import googleApiWrapper from './GoogleApiWrapper.js';
 import MapList from './MapList.js';
-import './Map.css';
+import './styles/Map.css';
 
 class Map extends Component {
   

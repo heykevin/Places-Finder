@@ -1,0 +1,24 @@
+.sidebar {
+  width: 30%;
+  height: 90%;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: white;
+  position: fixed;
+  z-index: 9;
+  overflow-y: hidden;
+  min-width: 370px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  .sidebar .list-header {
+    padding: 10px 10px 5px 10px;
+    background-color: #4B665A; }
+  .sidebar .no-results {
+    color: #8c8c8c;
+    padding-top: 20%;
+    font-size: 20px; }
+  .sidebar .text-search {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02); }
+  .sidebar .map-list {
+    height: 90%;
+    overflow-y: scroll; }

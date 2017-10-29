@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component'
-import './PlaceItem.css';
+import './styles/PlaceItem.css';
 
 class PlaceItem extends Component {
 

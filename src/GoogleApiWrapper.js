@@ -14,14 +14,6 @@ export const googleApiWrapper = (WrappedComponent) => {
       };
     }
 
-    componentWillMount() {
-      // let loc = this.getLocation();
-      // console.log(loc);
-      // this.setState({
-      //   location: new window.google.maps.LatLng(loc[0],loc[1])
-      // });
-    }
-
     componentDidMount() {
       // set google's initMap function to be our initMap with correct location
       // put in didMount so that div and script are loaded
@@ -37,6 +29,7 @@ export const googleApiWrapper = (WrappedComponent) => {
           this.setState({
             location: new window.google.maps.LatLng(loc[0], loc[1])
           });
+          // redraw map with new location
           window.initMap();
         });
       }
@@ -44,9 +37,8 @@ export const googleApiWrapper = (WrappedComponent) => {
 
     // initMap callback that Google api calls
     initMap() {
-      let pyrmont = new window.google.maps.LatLng(-33.8665433,151.1956316);
       let map = new window.google.maps.Map(window.document.getElementById("map"), {
-        center: this.state.location || pyrmont,
+        center: this.state.location || new window.google.maps.LatLng(-33.8665433,151.1956316),
         zoom: 15
       });
 
@@ -58,7 +50,6 @@ export const googleApiWrapper = (WrappedComponent) => {
 
     // Render the component we want wrapped with access to Google's api
     render() {
-      let pyrmont = new window.google.maps.LatLng(-33.8665433,151.1956316);
       this.getLocation();
 
       return (
@@ -66,7 +57,7 @@ export const googleApiWrapper = (WrappedComponent) => {
            <WrappedComponent 
               map={this.state.map}
               google={window.google}
-              loc={this.state.location || pyrmont}
+              loc={this.state.location}
               service={this.state.service}
               {...this.props}
             /> 
