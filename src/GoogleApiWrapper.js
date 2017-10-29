@@ -1,52 +1,72 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 // Higher order component to expose Google Maps/Places api to children
 export const googleApiWrapper = (WrappedComponent) => {
   return class extends Component {
     constructor() {
       super();
-
       // Initialize empty state
       this.state = {
         map: undefined, 
         service: undefined,
-        location: undefined
+        location: undefined,
+        google: undefined
       };
+    }
+
+    componentWillMount() {
+      // let loc = this.getLocation();
+      // console.log(loc);
+      // this.setState({
+      //   location: new window.google.maps.LatLng(loc[0],loc[1])
+      // });
+    }
+
+    componentDidMount() {
+      // set google's initMap function to be our initMap with correct location
+      // put in didMount so that div and script are loaded
+      window.initMap = this.initMap.bind(this);
+      window.initMap();
+    }
+
+    getLocation() {
+      if (navigator.geolocation) {
+        return navigator.geolocation.getCurrentPosition((position) => {
+          console.log("done");
+          const loc = [position.coords.latitude, position.coords.longitude]
+          this.setState({
+            location: new window.google.maps.LatLng(loc[0], loc[1])
+          });
+          window.initMap();
+        });
+      }
     }
 
     // initMap callback that Google api calls
     initMap() {
       let pyrmont = new window.google.maps.LatLng(-33.8665433,151.1956316);
       let map = new window.google.maps.Map(window.document.getElementById("map"), {
-        center: pyrmont,
+        center: this.state.location || pyrmont,
         zoom: 15
       });
+
       this.setState({
         map: map,
-        location: pyrmont,
         service: new window.google.maps.places.PlacesService(map)
-      })
-    }
-
-    componentDidMount() {
-      // set google's initMap function to be our initMap with correct location
-      // put in didMount so that div and script are loaded
-      let google = window.google;
-      var pyrmont = new window.google.maps.LatLng(-33.8665433,151.1956316);
-      window.initMap = this.initMap.bind(this);
-      window.initMap();
+      });
     }
 
     // Render the component we want wrapped with access to Google's api
     render() {
-      console.log(this.state);
+      let pyrmont = new window.google.maps.LatLng(-33.8665433,151.1956316);
+      this.getLocation();
+
       return (
         <div className="google-wrapper">
            <WrappedComponent 
-              map={this.state.map} 
-              google={window.google} 
-              loc={this.state.location} 
+              map={this.state.map}
+              google={window.google}
+              loc={this.state.location || pyrmont}
               service={this.state.service}
               {...this.props}
             /> 

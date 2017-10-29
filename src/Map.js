@@ -5,39 +5,18 @@ import './Map.css';
 
 class Map extends Component {
   
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       google: null
     };
   }
 
-  // Callback that google api will call when services request is sent
-  cb(results, status) {
-    this.setState({
-      places: results
-    });
-  }
-
-  searchPlace() {
-    let request = {
-      location: this.props.loc,
-      radius: '1000',
-      keyword: 'pizza'
-    };
-    this.props.service.nearbySearch(request, this.cb.bind(this))
-  }
-
+  // Render the div with id Map for google api to target
   render() {
-    let places;
-    if (this.state) {
-      places = this.state.places;
-    }
-
     return (
-      <div className="bottom">
-        <button className="search" onClick={() => this.searchPlace()}> Search </button>
-        <MapList places={places} {...this.props}/>
+      <div className="map">
+        <MapList {...this.props}/>
         <div id="map" />
       </div>
     );
