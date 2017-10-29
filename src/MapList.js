@@ -60,7 +60,6 @@ class MapList extends Component {
 
   // Callback that google api will call when services request is sent
   cb(results, status) {
-    console.log(results, status);
     this.setState({
       places: results,
       status: status

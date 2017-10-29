@@ -6,7 +6,8 @@
  - Done
 - Interactivity between map and list
  - Hover on list places marker on map
-- Cool features
+- Index.html in public folder
+- Cool features:
  - Nicely formatted Place summaries in List
  - ES7 using Babel
  - Sass support

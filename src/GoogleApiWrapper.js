@@ -24,7 +24,6 @@ export const googleApiWrapper = (WrappedComponent) => {
     getLocation() {
       if (navigator.geolocation) {
         return navigator.geolocation.getCurrentPosition((position) => {
-          console.log("done");
           const loc = [position.coords.latitude, position.coords.longitude]
           this.setState({
             location: new window.google.maps.LatLng(loc[0], loc[1])
