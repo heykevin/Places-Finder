@@ -5,7 +5,7 @@
 - A list of places available in current location
  - Done
 - Interactivity between map and list
- - Hover on list places marker on map
+ - Hover on list will place marker on map
 - Index.html in public folder
 - Cool features:
  - Nicely formatted Place summaries in List
@@ -21,13 +21,13 @@
 ## References
 - built upon official React scaffolding tool
 - used React Star Rating Component for ratings
+- React Bootstrap
 
 ## Set-up
 ### Requirements
-- node ^8.0.0
+- node 8.0.0
 
 ###instructions
-- extract files to a folder
 - npm install
 - npm start
 - go to localhost:3000

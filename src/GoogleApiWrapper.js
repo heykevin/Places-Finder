@@ -30,12 +30,18 @@ export const googleApiWrapper = (WrappedComponent) => {
           });
           // redraw map with new location
           window.initMap();
+        // default map if failed
+        },(err) => {
+          this.setState({
+            location: new window.google.maps.LatLng(-33.8665433,151.1956316)
+          });
         });
       }
     }
 
     // initMap callback that Google api calls
     initMap() {
+      // console.log(this.state.location || new window.google.maps.LatLng(-33.8665433,151.1956316));
       let map = new window.google.maps.Map(window.document.getElementById("map"), {
         center: this.state.location || new window.google.maps.LatLng(-33.8665433,151.1956316),
         zoom: 15
